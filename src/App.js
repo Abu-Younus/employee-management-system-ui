@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import AddEmployee from './components/employee/AddEmployee';
+import Navbar from './components/Navbar';
+import AllEmployee from './components/employee/AllEmployee';
+import UpdateEmployee from './components/employee/UpdateEmployee';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route index element={<AllEmployee/>}/>
+          <Route path='/' element={<AllEmployee/>}/>
+          <Route path='/employee' element={<AllEmployee/>}/>
+          <Route path='/employee/add' element={<AddEmployee/>}/>
+          <Route path='/employee/edit/:id' element={<UpdateEmployee/>}/>
+        </Routes>
+      </BrowserRouter>      
+    </>
   );
 }
 
